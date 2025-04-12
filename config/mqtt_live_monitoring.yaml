@@ -1,0 +1,28 @@
+/**/mqtt_client:
+  ros__parameters:
+    broker:
+      host: 'v59d1bdd.ala.eu-central-1.emqxsl.com'
+      port: 8883
+      user: 'ground_station'
+      pass: 'Ground_station'
+      tls:
+        enabled: true
+
+    bridge:
+      mqtt2ros:
+        mqtt_topics: 
+          - 'waraps/unit/surface/real/origin_gps'
+          - 'waraps/unit/surface/real/MiniUSV1/sensor/position'
+          - 'waraps/unit/surface/real/MiniUSV1/sensor/heading'
+          - 'waraps/unit/surface/real/MiniUSV2/sensor/position'
+          - 'waraps/unit/surface/real/MiniUSV2/sensor/heading'
+        waraps/unit/surface/real/origin_gps:
+          ros_topic: 'origin_gps'
+        waraps/unit/surface/real/MiniUSV1/sensor/position:
+          ros_topic: 'usv1/gps'
+        waraps/unit/surface/real/MiniUSV1/sensor/heading:
+          ros_topic: 'usv1/heading'
+        waraps/unit/surface/real/MiniUSV2/sensor/position:
+          ros_topic: 'usv2/gps'
+        waraps/unit/surface/real/MiniUSV2/sensor/heading:
+          ros_topic: 'usv2/heading'
