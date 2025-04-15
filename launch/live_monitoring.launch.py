@@ -8,7 +8,7 @@ from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration, PythonExpression
 
 launch_args = [
-    DeclareLaunchArgument('rosbag', default_value='False', description='True to start ros2bag record.'),
+    DeclareLaunchArgument('rosbag', description='True to start ros2bag record.'),
 ]
 
 def generate_launch_description():

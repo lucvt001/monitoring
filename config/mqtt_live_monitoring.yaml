@@ -1,10 +1,10 @@
 /**/mqtt_client:
   ros__parameters:
     broker:
-      host: 'v59d1bdd.ala.eu-central-1.emqxsl.com'
+      host: '6568851381634f73af5c5631e79edcce.s1.eu.hivemq.cloud'
       port: 8883
-      user: 'ground_station'
-      pass: 'Ground_station'
+      user: 'ground_station1'
+      pass: 'Ground_station1'
       tls:
         enabled: true
 
