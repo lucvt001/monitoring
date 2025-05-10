@@ -76,6 +76,19 @@ def generate_launch_description():
         }]
     )
 
+    usv2_target_path_plotter = Node(
+        name='usv2_target_path_plotter',
+        executable='tf_to_path',
+        package='monitoring',
+        output='screen',
+        parameters=[{
+            'parent_frame': 'world',
+            'child_frame': 'follower/target',
+            'path_topic': 'leader1/follower_target_path',
+            'publish_rate': 2.0  # Publish rate in Hz
+        }]
+    )
+
     usv2_path_plotter = Node(
         name='usv2_path_plotter',
         executable='tf_to_path',
