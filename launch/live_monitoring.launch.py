@@ -71,7 +71,7 @@ def generate_launch_description():
         parameters=[{
             'parent_frame': 'world',
             'child_frame': 'usv1/gps_link',
-            'path_topic': 'leader/path',
+            'path_topic': 'leader1/path/gps_path',
             'publish_rate': 2.0  # Publish rate in Hz
         }]
     )
@@ -84,7 +84,7 @@ def generate_launch_description():
         parameters=[{
             'parent_frame': 'world',
             'child_frame': 'usv2/gps_link',
-            'path_topic': 'follower/path',
+            'path_topic': 'follower/path/gps_path',
             'publish_rate': 2.0  # Publish rate in Hz
         }]
     )

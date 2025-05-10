@@ -12,19 +12,19 @@
       mqtt2ros:
         mqtt_topics: 
           - 'waraps/unit/surface/real/origin_gps'
-          - 'waraps/unit/surface/real/MiniUSV1/sensor/position'
+          - 'waraps/unit/surface/real/MiniUSV1/sensor/gps'
           - 'waraps/unit/surface/real/MiniUSV1/sensor/heading'
-          - 'waraps/unit/surface/real/MiniUSV2/sensor/position'
+          - 'waraps/unit/surface/real/MiniUSV2/sensor/gps'
           - 'waraps/unit/surface/real/MiniUSV2/sensor/heading'
           - 'waraps/unit/surface/real/MiniUSV2/control/throttle'
           - 'waraps/unit/surface/real/MiniUSV2/control/steering'
         waraps/unit/surface/real/origin_gps:
           ros_topic: 'origin_gps'
-        waraps/unit/surface/real/MiniUSV1/sensor/position:
+        waraps/unit/surface/real/MiniUSV1/sensor/gps:
           ros_topic: 'usv1/gps'
         waraps/unit/surface/real/MiniUSV1/sensor/heading:
           ros_topic: 'usv1/heading'
-        waraps/unit/surface/real/MiniUSV2/sensor/position:
+        waraps/unit/surface/real/MiniUSV2/sensor/gps:
           ros_topic: 'usv2/gps'
         waraps/unit/surface/real/MiniUSV2/sensor/heading:
           ros_topic: 'usv2/heading'
