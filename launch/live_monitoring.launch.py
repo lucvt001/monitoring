@@ -31,53 +31,80 @@ def generate_launch_description():
         package='formation_controller',
         parameters=[{
             'yaml_file_path': os.path.join(get_package_share_directory('formation_controller'), 'config', 'formation_shape.yaml'),
-            'leader_frame': 'usv1/gps_link',
+            'leader_frame': 'leader1/gps_link',
         }]
     )
 
-    usv1_tf = Node(
-        name='usv1_tf',
+    leader1_tf = Node(
+        name='leader1_tf',
         executable='gps_heading_to_tf',
         package='formation_controller',
         output='screen',
         parameters=[{
             'origin_gps_topic': 'origin_gps',
-            'current_gps_topic': 'usv1/gps',
-            'heading_topic': 'usv1/heading',
+            'current_gps_topic': 'leader1/gps',
+            'heading_topic': 'leader1/heading',
             'parent_frame': 'world',
-            'child_frame': 'usv1/gps_link',
+            'child_frame': 'leader1/gps_link',
         }]
     )
 
-    usv2_tf = Node(
-        name='usv2_tf',
+    leader2_tf = Node(
+        name='leader2_tf',
         executable='gps_heading_to_tf',
         package='formation_controller',
         output='screen',
         parameters=[{
             'origin_gps_topic': 'origin_gps',
-            'current_gps_topic': 'usv2/gps',
-            'heading_topic': 'usv2/heading',
+            'current_gps_topic': 'leader2/gps',
+            'heading_topic': 'leader2/heading',
             'parent_frame': 'world',
-            'child_frame': 'usv2/gps_link',
+            'child_frame': 'leader2/gps_link',
         }]
     )
 
-    usv1_path_plotter = Node(
-        name='usv1_path_plotter',
+    follower_tf = Node(
+        name='follower_tf',
+        executable='gps_heading_to_tf',
+        package='formation_controller',
+        output='screen',
+        parameters=[{
+            'origin_gps_topic': 'origin_gps',
+            'current_gps_topic': 'follower/gps',
+            'heading_topic': 'follower/heading',
+            'parent_frame': 'world',
+            'child_frame': 'follower/gps_link',
+        }]
+    )
+
+    leader1_path_plotter = Node(
+        name='leader1_path_plotter',
         executable='tf_to_path',
         package='monitoring',
         output='screen',
         parameters=[{
             'parent_frame': 'world',
-            'child_frame': 'usv1/gps_link',
+            'child_frame': 'leader1/gps_link',
             'path_topic': 'leader1/path/gps_path',
             'publish_rate': 2.0  # Publish rate in Hz
         }]
     )
 
-    usv2_target_path_plotter = Node(
-        name='usv2_target_path_plotter',
+    leader2_path_plotter = Node(
+        name='leader2_path_plotter',
+        executable='tf_to_path',
+        package='monitoring',
+        output='screen',
+        parameters=[{
+            'parent_frame': 'world',
+            'child_frame': 'leader2/gps_link',
+            'path_topic': 'leader2/path/gps_path',
+            'publish_rate': 2.0  # Publish rate in Hz
+        }]
+    )
+
+    follower_target_path_plotter = Node(
+        name='follower_target_path_plotter',
         executable='tf_to_path',
         package='monitoring',
         output='screen',
@@ -89,14 +116,14 @@ def generate_launch_description():
         }]
     )
 
-    usv2_path_plotter = Node(
-        name='usv2_path_plotter',
+    follower_path_plotter = Node(
+        name='follower_path_plotter',
         executable='tf_to_path',
         package='monitoring',
         output='screen',
         parameters=[{
             'parent_frame': 'world',
-            'child_frame': 'usv2/gps_link',
+            'child_frame': 'follower/gps_link',
             'path_topic': 'follower/path/gps_path',
             'publish_rate': 2.0  # Publish rate in Hz
         }]
@@ -105,10 +132,13 @@ def generate_launch_description():
     return LaunchDescription([
         *launch_args,
         mqtt_client,
-        usv1_tf,
-        usv2_tf,
-        usv1_path_plotter,
-        usv2_path_plotter,
         formation_shape_broadcaster,
+        leader1_tf,
+        leader2_tf,
+        follower_tf,
+        leader1_path_plotter,
+        leader2_path_plotter,
+        follower_path_plotter,
+        follower_target_path_plotter,
         TimerAction(period=4.0, actions=[rosbag_record]),
     ])

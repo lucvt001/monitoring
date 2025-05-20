@@ -12,23 +12,51 @@
       mqtt2ros:
         mqtt_topics: 
           - 'mqtt_client/origin_gps'
-          - 'mqtt_client/MiniUSV1/sensor/gps'
-          - 'mqtt_client/MiniUSV1/sensor/heading'
-          - 'mqtt_client/MiniUSV2/sensor/gps'
-          - 'mqtt_client/MiniUSV2/sensor/heading'
-          - 'mqtt_client/MiniUSV2/control/throttle'
-          - 'mqtt_client/MiniUSV2/control/steering'
+
+          - 'mqtt_client/leader1/sensor/gps'
+          - 'mqtt_client/leader1/sensor/heading'
+
+          - 'mqtt_client/leader2/sensor/gps'
+          - 'mqtt_client/leader2/sensor/heading'
+
+          - 'mqtt_client/follower/sensor/gps'
+          - 'mqtt_client/follower/sensor/heading'
+          - 'mqtt_client/follower/control/throttle'
+          - 'mqtt_client/follower/control/steering'
+          - 'mqtt_client/follower/ukf/state'
+          - 'mqtt_client/follower/ukf/offset_position_x'
+          - 'mqtt_client/follower/ukf/offset_position_y'
+          - 'mqtt_client/follower/gps/offset_position_x'
+          - 'mqtt_client/follower/gps/offset_position_y'
+
         mqtt_client/origin_gps:
           ros_topic: 'origin_gps'
-        mqtt_client/MiniUSV1/sensor/gps:
-          ros_topic: 'usv1/gps'
-        mqtt_client/MiniUSV1/sensor/heading:
-          ros_topic: 'usv1/heading'
-        mqtt_client/MiniUSV2/sensor/gps:
-          ros_topic: 'usv2/gps'
-        mqtt_client/MiniUSV2/sensor/heading:
-          ros_topic: 'usv2/heading'
-        mqtt_client/MiniUSV2/control/throttle:
+
+        mqtt_client/leader1/sensor/gps:
+          ros_topic: 'leader1/gps'
+        mqtt_client/leader1/sensor/heading:
+          ros_topic: 'leader1/heading'
+
+        mqtt_client/leader2/sensor/gps:
+          ros_topic: 'leader2/gps'
+        mqtt_client/leader2/sensor/heading:
+          ros_topic: 'leader2/heading'
+
+        mqtt_client/follower/sensor/gps:
+          ros_topic: 'follower/gps'
+        mqtt_client/follower/sensor/heading:
+          ros_topic: 'follower/heading'
+        mqtt_client/follower/control/throttle:
           ros_topic: 'follower/control/throttle'
-        mqtt_client/MiniUSV2/control/steering:
+        mqtt_client/follower/control/steering:
           ros_topic: 'follower/control/steering'
+        mqtt_client/follower/ukf/state:
+          ros_topic: 'follower/ukf/state'
+        mqtt_client/follower/ukf/offset_position_x:
+          ros_topic: 'follower/ukf/offset_position_x'
+        mqtt_client/follower/ukf/offset_position_y:
+          ros_topic: 'follower/ukf/offset_position_y'
+        mqtt_client/follower/gps/offset_position_x:
+          ros_topic: 'follower/gps/offset_position_x'
+        mqtt_client/follower/gps/offset_position_y:
+          ros_topic: 'follower/gps/offset_position_y'
